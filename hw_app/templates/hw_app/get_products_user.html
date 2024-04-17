@@ -1,0 +1,24 @@
+{% extends 'hw_app/base.html' %}
+
+{% block content %}
+
+        {% if period == 1 %}
+            <h2>Список заказанных товаров за неделю</h2>
+        {% elif period == 2 %}
+            <h2>Список заказанных товаров за месяц</h2>
+        {% elif period == 3 %}
+            <h2>Список заказанных товаров за год</h2>
+        {% else %}
+            <h2>Не верный период, укажите период: /1 - неделя, /2 - месяц, /3- год</h2>
+        {% endif %}
+        </h2>
+    {% if sorted_products %}
+        <ul>
+            {% for product in sorted_products %}
+                <li>{{ product.name }} - {{ product.price }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>У этого клиента нет заказов за этот период.</p>
+    {% endif %}
+{% endblock %}

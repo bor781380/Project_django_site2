@@ -1,0 +1,10 @@
+{% extends 'hw_app/base.html' %}
+
+{% block title %}
+<h1>{{ message }}</h1>
+{% endblock %}
+
+{% block content %}
+    <p>Просмотрите список пользователей на вкладке <a href="{% url 'get_all_users' %}">НАШИ КЛИЕНТЫ</a>,
+        выберите ID клиента, вернитесь на страницу ЗАКАЗ КЛИЕНТА и введите ID-клиента в url-строке.</p>
+{% endblock %}

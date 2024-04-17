@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <p>Мой маленький сайт</p>
+    <tr>
+        <a href="{% url 'index' %}">| ГЛАВНАЯ |</a>
+        <a href="{% url 'about' %}">| OБО МНЕ |</a>
+        <a href="{% url 'get_all_users' %}">| НАШИ КЛИЕНТЫ |</a>
+        <a href="{% url 'get_all_products' %}">| НАШИ ТОВАРЫ |</a>
+        <a href="{% url 'get_orders_user' %}">| ЗАКАЗ КЛИЕНТА |</a>
+        <a href="{% url 'get_products_user' %}">| ТОВАРЫ КЛИЕНТА |</a>
+        <a href="{% url 'add_product' %}">| ДОБАВИТЬ ТОВАР |</a>
+        <a href="{% url 'edit_product' %}">| РЕДАКТИРОВАТЬ ТОВАР |</a>
+    </tr>
+    <p>{% block title %}
+        <p> </p>
+        {% endblock %}</p>
+</head>
+<body>
+    {% block content %}
+        <p>Скоро тут появится текст...</p>
+    {% endblock %}
+</body>
+</html>

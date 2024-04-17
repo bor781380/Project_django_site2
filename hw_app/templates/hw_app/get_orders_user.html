@@ -1,0 +1,22 @@
+{% extends 'hw_app/base.html' %}
+
+{% block title %}
+<h1>Заказы клиента {{ user_name }} (№ {{ user_id }}) :</h1>
+{% endblock %}
+
+
+{% block content %}
+    {% if sorted_orders_with_products %}
+        {% for order, products in sorted_orders_with_products %}
+            <h3>Заказ № {{ order.id }} на общую сумму {{ order.total_price }} руб. от
+                {{ order.date_ordered|date:"d-m-Y" }}</h3>
+            <ul>
+                {% for product in products %}
+                    <li>{{ product.name }} - {{ product.price }} руб.</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    {% else %}
+        <h3>У этого клиента еще нет заказов</h3>
+    {% endif %}
+{% endblock %}

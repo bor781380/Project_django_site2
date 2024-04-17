@@ -1,0 +1,16 @@
+{% extends 'hw_app/base.html' %}
+
+{% block content %}
+    <form method="post" action="/add_product/" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+<!--        <input type="file" name="image">-->
+    <input type="submit" value="Добавить товар в базу">
+    </form>
+
+{% endblock %}
+
+{% block title %}
+<h3>{{ message }}</h3>
+{% endblock %}
+

@@ -1,0 +1,43 @@
+{% extends 'hw_app/base.html' %}
+{% load static %}
+{% block content %}
+<button onclick="showSelectedProduct()">Показать выбранный товар</button>
+    <div id="selected-product-info"></div>
+    <form action="" method="post" id="edit-product-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <img src="{{ product.image_url }}" alt="Product Image">
+        <input type="submit" value="Обновить данные о товаре">
+    </form>
+
+    <script>
+        function showSelectedProduct() {
+            var selectElement = document.getElementById('id_product_options');
+            var selectedProductId = selectElement.options[selectElement.selectedIndex].value;
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    var response = JSON.parse(this.responseText);
+                    if (response.hasOwnProperty('error')) {
+                        document.getElementById("selected-product-info").innerText = response.error;
+                    } else {
+                        var form = document.getElementById('edit-product-form');
+                        form.elements['name'].value = response.name;
+                        form.elements['description'].value = response.description;
+                        form.elements['price'].value = response.price;
+                        form.elements['quantity'].value = response.quantity;
+                        form.elements['image'].value = response.image;
+                        document.getElementById("product-image").src = response.image_url;
+                    }
+                }
+            };
+            xhttp.open("GET", "/get_selected_product/?product_id=" + selectedProductId, true);
+            xhttp.send();
+        }
+    </script>
+{% endblock %}
+
+{% block title %}
+    <h3>{{ message }}</h3>
+{% endblock %}

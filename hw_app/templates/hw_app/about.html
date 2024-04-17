@@ -1,0 +1,14 @@
+{% extends 'hw_app/base.html' %}
+{% load static %}
+
+{% block title %}
+<h1>Обо мне</h1>
+    {% endblock %}
+
+{% block content %}
+    <p>Меня зовут Андрей и я создал этот сайт, я его дополняю, и скоро он станет красивым.
+    <br>
+    <br> Как этот котик!</p>
+    <img src="{% static 'foto.jpg' %}" width="500" height="350" class="col-12 col-md-6
+        img-fluid rounded-circle" alt="котик">
+{% endblock %}

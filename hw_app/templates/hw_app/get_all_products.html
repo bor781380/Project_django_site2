@@ -1,0 +1,25 @@
+{% extends 'hw_app/base.html' %}
+
+{% block title %}
+<h1>Список товаров:</h1>
+{% endblock %}
+
+{% block content %}
+    <h2>Рады предложить вам в нашем магазине!</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Товар</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
